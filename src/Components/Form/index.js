@@ -1,6 +1,6 @@
-import styled from "styled-components"
+import { styled } from "styled-components"
 
-export const Form = styled.form`
+const Form = styled.form`
     display: flex;
     flex-direction: column;
     width: 80%;
@@ -13,10 +13,15 @@ export const Form = styled.form`
     }
 `
 
-export const MainContainer = styled.div`
+const MainContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100vh;
 `
+
+export {
+    Form,
+    MainContainer
+}

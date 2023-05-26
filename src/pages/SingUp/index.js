@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Form, MainContainer } from "./style"
+import { Form, MainContainer } from "../../Components/Form"
 import { port } from "../../port"
 import axios from "axios"
 
