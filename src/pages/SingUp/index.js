@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Form, MainContainer } from "../../Components/Form"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 export default function SignUp(){
     const [name, setName] = useState("")
@@ -9,6 +10,7 @@ export default function SignUp(){
     const [description, setDescription] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
+    const navigate = useNavigate()
 
     function signUp(e){
         e.preventDefault()
@@ -29,6 +31,7 @@ export default function SignUp(){
                 <input type="password" placeholder="senha" minlength="3" onChange={(e) => setPassword(e.target.value)} required></input>
                 <input type="password" placeholder="confirme senha" minlength="3" onChange={(e) => setConfirmPassword(e.target.value)} required></input>
                 <button type="submit">CADASTRAR</button>
+                <a onClick={() => navigate("/signin")}>Ja possui uma conta? Logue aqui</a>
             </Form>
         </MainContainer>
     )

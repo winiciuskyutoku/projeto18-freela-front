@@ -39,7 +39,8 @@ export default function SignIn(){
                 <input type="email" required onChange={(e) => setEmail(e.target.value)} placeholder="email"></input>
                 <input type="password" required onChange={(e) => setPassword(e.target.value)} placeholder="senha"></input>
                 <button type="submit">LOGIN</button>
-            </Form>
+                <a onClick={() => navigate("/signup")}>Ainda nao tem uma conta? Se cadastre aqui!</a>
+            </Form>   
         </MainContainer>
     )
 }
