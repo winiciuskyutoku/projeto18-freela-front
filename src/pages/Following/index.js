@@ -1,7 +1,6 @@
 import { FollowersMainContainer, FollowersContainer } from "../Followers/style"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { port } from "../../port"
 import axios from "axios"
 
 export default function Following() {
@@ -14,7 +13,7 @@ export default function Following() {
             navigate("/")
         }
 
-        const url = `${port}/following/${id}`
+        const url = `${process.env.REACT_APP_API_URL}/following/${id}`
 
         axios.get(url).then(sucess => setData(sucess.data)).catch(fail => console.log(fail.response))
     }, [])

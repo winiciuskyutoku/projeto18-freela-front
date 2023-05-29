@@ -4,7 +4,6 @@ import UserContext from "../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
-import { port } from "../../port";
 
 
 export default function NewPost(){
@@ -28,7 +27,7 @@ export default function NewPost(){
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         }
-        const url = `${port}/new-post`
+        const url = `${process.env.REACT_APP_API_URL}/new-post`
         const body = {image, description}
 
         console.log(url, config)

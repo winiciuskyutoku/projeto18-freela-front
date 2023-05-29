@@ -1,6 +1,5 @@
 import { Form, MainContainer } from "../../Components/Form";
 import { useContext, useEffect, useState } from "react";
-import {port} from "../../port"
 import axios from "axios";
 import UserContext from "../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +21,7 @@ export default function SignIn(){
     function signIn(e){
         e.preventDefault()
 
-        const url = `${port}/signin`
+        const url = `${process.env.REACT_APP_API_URL}/signin`
         const body = {email, password}
 
         axios.post(url, body).then(sucess => {

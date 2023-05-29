@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react"
 import { MainContainer, UserContainer, PostContainer, NewPostButton, Search } from "./style"
 import UserContext from "../../contexts/UserContext"
 import { useNavigate } from "react-router-dom"
-import { port } from "../../port"
 import axios from "axios"
 import { FollowersContainer } from "../Followers/style"
 
@@ -23,7 +22,7 @@ export default function Home() {
         const config = {
             headers: { Authorization: `Bearer ${token}` }
         }
-        const url = `${port}/`
+        const url = `${process.env.REACT_APP_API_URL}/`
 
         axios.get(url, config).then(sucess => setPosts(sucess.data)).catch(fail => console.log(fail))
     }, [])
@@ -39,7 +38,7 @@ export default function Home() {
     function searchUser(e) {
         e.preventDefault()
 
-        const url = `${port}/users`
+        const url = `${process.env.REACT_APP_API_URL}/users`
         const body = { name }
 
         axios.post(url, body).then(sucess => {

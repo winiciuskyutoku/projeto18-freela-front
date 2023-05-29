@@ -3,7 +3,6 @@ import { MainContainer, UserContainer, PostContainer } from "../Home/style"
 import { useEffect, useState } from "react"
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"
 import { styled } from "styled-components"
-import { port } from "../../port"
 import axios from "axios"
 
 export default function FollowerProfile() {
@@ -23,7 +22,7 @@ export default function FollowerProfile() {
             navigate("/")
         }
 
-        const url = `${port}/user/${id}`
+        const url = `${process.env.REACT_APP_API_URL}/user/${id}`
 
         axios.get(url).then(sucess => {
             setData(sucess.data)
@@ -49,7 +48,7 @@ export default function FollowerProfile() {
         e.preventDefault()
 
         const body = {userId: id, followerId: lsUser.id}
-        const url = `${port}/follow`
+        const url = `${process.env.REACT_APP_API_URL}/follow`
         axios.post(url, body).then(sucess => console.log(sucess.data)).catch(fail => alert(fail.response.data.message))
     }
 
@@ -58,7 +57,7 @@ export default function FollowerProfile() {
             setLiked([...liked, postId])
         }
 
-        const url = `${port}/post/like/${postId}`
+        const url = `${process.env.REACT_APP_API_URL}/post/like/${postId}`
         const body = {condition, likedBy: lsUser.id, postOwnerId: id}
         axios.post(url, body).then(sucess => console.log(sucess.data)).catch(fail => console.log(fail.response.data))
     }

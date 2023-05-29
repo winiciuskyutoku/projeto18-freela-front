@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { Form, MainContainer } from "../../Components/Form"
-import { port } from "../../port"
 import axios from "axios"
 
 export default function SignUp(){
@@ -14,7 +13,7 @@ export default function SignUp(){
     function signUp(e){
         e.preventDefault()
 
-        const url = `${port}/signup`
+        const url = `${process.env.REACT_APP_API_URL}/signup`
         const body = {name, email, image, description, password, confirmPassword}
 
         axios.post(url, body).then(sucess => console.log(sucess.data)).catch(fail => alert(fail.response.data.message))
