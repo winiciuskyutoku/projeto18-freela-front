@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 export default function SignIn(){
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const {setToken, setUserName} = useContext(UserContext)
+    const {setToken, setUserName, setId} = useContext(UserContext)
     const lsUser = JSON.parse(localStorage.getItem("token"))
 
     const navigate = useNavigate()
@@ -29,7 +29,8 @@ export default function SignIn(){
             console.log(sucess.data)
             setToken(sucess.data.token)
             setUserName(sucess.data.username)
-            localStorage.setItem("token", JSON.stringify({username: sucess.data.username, token: sucess.data.token}))
+            setId(sucess.data.userId)
+            localStorage.setItem("token", JSON.stringify({username: sucess.data.username, token: sucess.data.token, id: sucess.data.userId}))
         }).catch(fail => alert(fail.response.data.message))
     }
 
