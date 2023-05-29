@@ -11,13 +11,11 @@ export default function SignIn(){
     const {setToken, setUserName} = useContext(UserContext)
     const lsUser = JSON.parse(localStorage.getItem("token"))
 
-    console.log(lsUser)
-
     const navigate = useNavigate()
 
     useEffect(() => {
         if(lsUser !== null){
-            navigate("/home")
+            navigate("/")
         }
     }, [lsUser])
 
